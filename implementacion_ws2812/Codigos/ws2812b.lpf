@@ -1,0 +1,22 @@
+# =============================================================
+# ws2812b.lpf - Constraints para Colorlight i9 v7.2
+# FPGA: Lattice ECP5 LFE5U-45F-6BG381C
+# =============================================================
+
+# ---------- Reloj de 25 MHz (oscilador onboard) ----------
+LOCATE COMP "clk" SITE "P3";
+IOBUF PORT "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25 MHZ;
+
+# ---------- Reset activo en bajo ----------
+# Con PULLMODE=UP el pin queda en '1' si no conectas nada,
+# asi el modulo arranca solo. Si quieres un boton de reset
+# fisico, conectalo entre este pin y GND.
+# *** AJUSTA el pin segun donde lo tengas cableado ***
+LOCATE COMP "rst_n" SITE "K18";
+IOBUF PORT "rst_n" IO_TYPE=LVCMOS33 PULLMODE=UP;
+
+# ---------- Salida hacia DIN del primer WS2812B ----------
+# *** AJUSTA el pin segun el conector de tu ext-board ***
+LOCATE COMP "dout" SITE "K20";
+IOBUF PORT "dout" IO_TYPE=LVCMOS33 DRIVE=8;
