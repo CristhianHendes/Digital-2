@@ -1,0 +1,16 @@
+cd /home/cristhianhendes/digital_2/Digital-2/implementacion_ws2812/litex_ws2812
+source /home/cristhianhendes/litex/.venv/bin/activate
+
+# 1) Construir el SoC (gateware + BIOS)
+./colorlight_i9_ws2812.py --board=i9 --revision=7.2 --build
+
+# 2) Cargar a la FPGA (SRAM, sin --write-flash)
+./colorlight_i9_ws2812.py --board=i9 --revision=7.2 --load
+
+# 3) Compilar y subir el firmware (modo animado por defecto)
+make -C firmware/
+make -C firmware/ litex_term
+
+#4 reboot
+
+Para modo estático: edita firmware/main.c y cambia #define WS2812_ANIMATE 1 a 0, luego repite el paso 3.

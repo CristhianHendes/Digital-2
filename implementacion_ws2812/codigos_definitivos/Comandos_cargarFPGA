@@ -1,0 +1,14 @@
+Imagen estatica 
+
+cd /home/cristhianhendes/digital_2/Digital-2/implementacion_ws2812/codigos_2
+source /home/cristhianhendes/litex/.venv/bin/activate
+make bit                           
+openFPGALoader -b colorlight-i9 ws2812_matrix_top.bit 
+
+Imagen movimiento 
+
+cd /home/cristhianhendes/digital_2/Digital-2/implementacion_ws2812/codigos_2
+source /home/cristhianhendes/litex/.venv/bin/activate
+make bit TOP=ws2812_matrix_top_anim
+openFPGALoader -b colorlight-i9 ws2812_matrix_top_anim.bit
+

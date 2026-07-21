@@ -1,0 +1,22 @@
+# =============================================================
+# ws2812_matrix.lpf - Constraints para Colorlight i9 v7.2
+# FPGA: Lattice ECP5 LFE5U-45F-6BG381C
+#
+# Pines tomados de board/colorlight_i5.py (calculadora/), la misma
+# placa/cableado que ya usamos con LiteX: clk25=P3, cpu_reset_n=K18,
+# led_matrix.dout=G5.
+# =============================================================
+
+# ---------- Reloj de 25 MHz (oscilador onboard) ----------
+LOCATE COMP "clk" SITE "P3";
+IOBUF PORT "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25 MHZ;
+
+# ---------- Reset activo en bajo (boton fisico ya presente en la placa) ----------
+LOCATE COMP "rst_n" SITE "K18";
+IOBUF PORT "rst_n" IO_TYPE=LVCMOS33 PULLMODE=UP;
+
+# ---------- Salida hacia DIN del primer WS2812B ----------
+# Mismo pin donde ya tienes conectada la matriz (resource "led_matrix").
+LOCATE COMP "dout" SITE "G5";
+IOBUF PORT "dout" IO_TYPE=LVCMOS33 DRIVE=8;

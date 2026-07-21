@@ -1,0 +1,30 @@
+PACKAGES=libc libcompiler_rt libbase libfatfs liblitespi liblitedram libliteeth liblitesdcard liblitesata bios
+PACKAGE_DIRS=/home/cristhianhendes/litex/litex/litex/soc/software/libc /home/cristhianhendes/litex/litex/litex/soc/software/libcompiler_rt /home/cristhianhendes/litex/litex/litex/soc/software/libbase /home/cristhianhendes/litex/litex/litex/soc/software/libfatfs /home/cristhianhendes/litex/litex/litex/soc/software/liblitespi /home/cristhianhendes/litex/litex/litex/soc/software/liblitedram /home/cristhianhendes/litex/litex/litex/soc/software/libliteeth /home/cristhianhendes/litex/litex/litex/soc/software/liblitesdcard /home/cristhianhendes/litex/litex/litex/soc/software/liblitesata /home/cristhianhendes/litex/litex/litex/soc/software/bios
+LIBS=libc libcompiler_rt libbase libfatfs liblitespi liblitedram libliteeth liblitesdcard liblitesata
+ALWAYS_LINK_LIBS=
+TRIPLE=riscv64-unknown-elf
+CPU=vexriscv
+CPUFAMILY=riscv
+CPUFLAGS=-march=rv32i2p0_m     -mabi=ilp32 -D__vexriscv__
+CPUENDIANNESS=little
+CLANG=0
+CPU_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/cores/cpu/vexriscv
+SOC_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc
+PICOLIBC_DIRECTORY=/home/cristhianhendes/litex/pythondata-software-picolibc/pythondata_software_picolibc/data
+PICOLIBC_FORMAT=integer
+LIBC_MODE=minimal
+COMPILER_RT_DIRECTORY=/home/cristhianhendes/litex/pythondata-software-compiler_rt/pythondata_software_compiler_rt/data
+export BUILDINC_DIRECTORY
+BUILDINC_DIRECTORY=/home/cristhianhendes/digital_2/Digital-2/implementacion_ws2812/litex_ws2812/build/colorlight_i5/software/include
+LIBC_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/libc
+LIBCOMPILER_RT_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/libcompiler_rt
+LIBBASE_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/libbase
+LIBFATFS_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/libfatfs
+LIBLITESPI_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/liblitespi
+LIBLITEDRAM_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/liblitedram
+LIBLITEETH_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/libliteeth
+LIBLITESDCARD_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/liblitesdcard
+LIBLITESATA_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/liblitesata
+BIOS_DIRECTORY=/home/cristhianhendes/litex/litex/litex/soc/software/bios
+LTO=0
+BIOS_CONSOLE_FULL=1

@@ -1,0 +1,4 @@
+yosys -p "read_verilog ws2812b_controller.v; synth_ecp5 -top ws2812b_controller -json ws2812b.json"
+nextpnr-ecp5 --45k --package CABGA381 --speed 6 \\n    --json ws2812b.json --lpf ws2812b.lpf --textcfg ws2812b.config
+ecppack --compress ws2812b.config ws2812b.bit
+openFPGALoader -b colorlight-i9 ws2812b.bit
