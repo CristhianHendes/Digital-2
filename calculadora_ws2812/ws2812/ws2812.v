@@ -11,10 +11,6 @@ parameter fcia = 25000000;
 parameter T0H = 15'd10;
 parameter T1H = 15'd20;
 parameter PER = 15'd31;
-// 12500 ciclos @ 25MHz = 500us. Los clones WS2812B/SK6812 usados
-// necesitan bastante mas que los 50us (1250 ciclos) del datasheet
-// para re-latchear datos DISTINTOS entre refrescos consecutivos (ver
-// el mismo hallazgo en codigos_2/ws2812_matrix_top_anim.v).
 parameter RES = 15'd12500;
 
 wire rst;

@@ -1,7 +1,3 @@
-// Divisor 32/32 -> cociente(32) + residuo(32), sin signo.
-// Mismo esquema de conexion que mult_32.v: un modulo "control" (FSM)
-// mas un puñado de registros/combinacional de datapath, conectados
-// aqui arriba.
 module div_32 (clk, rst, init, A, B, q, r, done);
 
   input clk;

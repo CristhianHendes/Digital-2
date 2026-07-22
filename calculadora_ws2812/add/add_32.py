@@ -11,9 +11,7 @@ class Add32(Module, AutoCSR):
         self._B   = CSRStorage(32, description="Operando B (32 bits)")
         self._sum = CSRStatus(32, description="Suma A+B (32 bits)")
 
-        # Sumador combinacional en Verilog puro (add_32.v); Migen solo
-        # conecta sus puertos a los registros CSR, igual que hace
-        # mult_32.py con el multiplicador vendorizado.
+       
         self.specials += Instance("add_32",
             i_A   = self._A.storage,
             i_B   = self._B.storage,

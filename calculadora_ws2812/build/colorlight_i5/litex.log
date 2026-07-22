@@ -1,5 +1,5 @@
 # LiteX build log
-# Started: 2026-07-22T13:21:55
+# Started: 2026-07-22T16:27:40
 # Command: colorlight_i9_calc_ws2812.py --board=i9 --revision=7.2 --load
 # Working directory: /home/cristhianhendes/digital_2/Digital-2/calculadora_ws2812
 
@@ -9,7 +9,7 @@ INFO:SoC:      / /__/ / __/ -_)>  <
 INFO:SoC:     /____/_/\__/\__/_/|_|  
 INFO:SoC:  Build your hardware, easily!
 INFO:SoC:--------------------------------------------------------------------------------
-INFO:SoC:Creating SoC... (2026-07-22 13:21:55)
+INFO:SoC:Creating SoC... (2026-07-22 16:27:40)
 INFO:SoC:--------------------------------------------------------------------------------
 INFO:SoC:FPGA device : LFE5U-45F-6BG381C.
 INFO:SoC:System clock: 60.000MHz.
@@ -57,8 +57,8 @@ INFO:SoCBusHandler:spiflash Region allocated at Origin: 0x00800000, Size: 0x0080
 INFO:SoCBusHandler:spiflash Bus offset by 0x00800000.
 INFO:SoCBusHandler:spiflash added as Bus Slave.
 INFO:SoCBusHandler:main_ram Region added at Origin: 0x40000000, Size: 0x00800000, Mode: RWX, Cached:  True, Linker: False.
-openFPGALoader --board colorlight-i5 --bitstream /home/cristhianhendes/digital_2/Digital-2/calculadora_ws2812/build/colorlight_i5/gateware/colorlight_i5.bit
 INFO:SoCBusHandler:main_ram added as Bus Slave.
+openFPGALoader --board colorlight-i5 --bitstream /home/cristhianhendes/digital_2/Digital-2/calculadora_ws2812/build/colorlight_i5/gateware/colorlight_i5.bit
 empty
 Found 1 compatible device:
 	0x0d28 0x0204 0x3 DAPLink CMSIS-DAP

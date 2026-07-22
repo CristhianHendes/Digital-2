@@ -354,7 +354,7 @@
         "config_cpu_name": "vexriscv",
         "config_cpu_human_name": "VexRiscv",
         "config_cpu_nop": "nop",
-        "config_identifier": "LiteX Calculadora+WS2812 on Colorlight I9 2026-07-22 13:18:36",
+        "config_identifier": "LiteX Calculadora+WS2812 on Colorlight I9 2026-07-22 16:24:59",
         "spiflash_phy_frequency": 15000000,
         "spiflash_phy_min_divisor": 2,
         "spiflash_module_name": "w25q64",

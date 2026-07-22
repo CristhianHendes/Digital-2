@@ -11,8 +11,7 @@ class Sub32(Module, AutoCSR):
         self._B    = CSRStorage(32, description="Sustraendo B (32 bits)")
         self._diff = CSRStatus(32, description="Resta A-B (32 bits, complemento a 2)")
 
-        # Restador combinacional en Verilog puro (sub_32.v); Migen solo
-        # conecta sus puertos a los registros CSR.
+
         self.specials += Instance("sub_32",
             i_A    = self._A.storage,
             i_B    = self._B.storage,

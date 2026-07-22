@@ -15,15 +15,7 @@ class Div32(Module, AutoCSR):
         self._r    = CSRStatus(32, description="Residuo (32 bits)")
         self._done = CSRStatus( 1, description="1 cuando terminó")
 
-        # Divisor 32/32 en Verilog puro (control_div + datapath en
-        # div/*.v, misma arquitectura control+datapath que mult_32.v),
-        # ya validado por simulacion (Icarus) contra 10 casos de
-        # prueba incluyendo bordes (0/N, UINT32_MAX/1, potencias de 2).
-        # A diferencia del Divider generico de migen.genlib (que exigia
-        # un pulso de start_i de exactamente 1 ciclo, por eso la
-        # version anterior de este archivo generaba ese pulso a mano
-        # con deteccion de flanco), esta FSM tolera "init" sostenido en
-        # alto varios ciclos, igual que control_mult.v.
+
         self.specials += Instance("div_32",
             i_clk  = ClockSignal("sys"),
             i_rst  = ResetSignal("sys"),

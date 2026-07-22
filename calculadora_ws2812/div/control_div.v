@@ -1,7 +1,3 @@
-// FSM del divisor: misma estructura de 3 fases que control_mult.v
-// (arranque/ejecucion/fin), pero aqui la fase de ejecucion dura
-// exactamente 32 ciclos (uno por cada bit del dividendo), contados
-// con "count", en vez de terminar por deteccion de "z" como en mult.
 module control_div (clk, rst, init, done, load, shift);
 
   input clk;
@@ -17,7 +13,7 @@ module control_div (clk, rst, init, done, load, shift);
   parameter END   = 2'b10;
 
   reg [1:0] state;
-  reg [5:0] count; // 0..31: un ciclo por cada bit del dividendo (32 bits)
+  reg [5:0] count; 
 
   initial begin
     state = START;

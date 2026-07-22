@@ -15,13 +15,6 @@ module ws2812_periph (
 parameter SIZE   = 8;
 parameter N_LEDS = 8'h2**SIZE;
 
-// Tiempos del protocolo WS2812, en ciclos del reloj "clk" que
-// realmente llega a este modulo. IMPORTANTE: los defaults de abajo
-// (y los de ws2812.v) asumen 25MHz; si "clk" corre a otra frecuencia
-// (p.ej. sys_clk_freq=60MHz en el SoC LiteX) hay que sobreescribir
-// estos 4 parametros con los ciclos correctos, o los pulsos quedan
-// fuera de la tolerancia del datasheet WS2812 y los LEDs no
-// reconocen ningun dato (sintoma: no enciende nada, ni basura).
 parameter T0H = 15'd10;
 parameter T1H = 15'd20;
 parameter PER = 15'd31;
@@ -32,15 +25,7 @@ wire rst_addr;
 wire inc_addr;
 wire done_led;
 wire z;
-// count_addr tiene un contador nativo de 8 bits; si aca lo
-// truncaramos a [SIZE-1:0] (p.ej. 6 bits para N_LEDS=64), el
-// contador NUNCA podria alcanzar el valor N_LEDS=2**SIZE (maximo
-// representable en SIZE bits es 2**SIZE - 1), por lo que "z" jamas
-// se activaria y ctrl_ws_arr quedaria en loop infinito sin fin de
-// pasada (mismo bug de truncamiento ya visto y corregido en
-// codigos_2/ws2812_led_array.v). Se mantiene address a 8 bits para
-// la comparacion contra N_LEDS y solo se trunca al indexar la
-// memoria.
+
 wire [7:0] address;
 wire [23:0] rgb;
 

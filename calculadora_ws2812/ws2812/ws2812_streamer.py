@@ -39,11 +39,7 @@ class WS2812StreamLoader(Module, AutoCSR):
         ]
 
         self.sync += [
-            # Register the write port signals. The Verilog LED memory writes on
-            # negedge clk, so combinatorial addr/data from a posedge-updated
-            # stream handshake would otherwise be observed half a cycle later
-            # and shift writes by one address. Holding these outputs registered
-            # gives ws2812_periph.mem0 stable write signals for the negedge.
+            
             self.we.eq(0),
             If(self.start.re,
                 addr.eq(0),
@@ -54,12 +50,7 @@ class WS2812StreamLoader(Module, AutoCSR):
                 self.w_data.eq(0)
             ).Elif(loading,
                 If(sink.valid & sink.ready,
-                    # One 32-bit DMA word per LED: 0x00RRGGBB.
-                    # WishboneDMAReader presents 0x00RRGGBB from SRAM as
-                    # 0xBBGGRR00 on the stream. lsr_wsled/ws2812.v
-                    # desplazan w_data MSB-primero, y el WS2812 exige
-                    # orden G-R-B (verde primero), asi que el byte MSB
-                    # de w_data debe ser G, no R.
+
                     self.w_data.eq(Cat(
                         sink.data[24:32],  # B -> bits [7:0]
                         sink.data[8:16],   # R -> bits [15:8]
@@ -93,34 +84,17 @@ class WS2812StreamLoader(Module, AutoCSR):
 
 class WS2812(Module, AutoCSR):
     def __init__(self, platform, data, n_leds=256, sys_clk_freq=25e6):
-        # Existing WS2812 control/status CSR
         self.init    = CSRStorage(1)
         self.rst_cmd = CSRStorage(1)
         self.done    = CSRStatus(1)
         self.dout    = data.dout
-
-        # DMA stream loader
         self.submodules.loader = WS2812StreamLoader(n_leds=n_leds)
         self.sink = self.loader.sink
 
-        # Explicit connection:
-        #   DMA stream -> WS2812StreamLoader -> ws2812_periph memory write port
-        #
-        # SIZE debe coincidir con n_leds (N_LEDS = 2**SIZE dentro del
-        # Verilog). Si se deja el default (SIZE=8, N_LEDS=256) con
-        # solo 64 LEDs reales, o si SIZE fuera igual al ancho nativo
-        # del contador de direcciones, la comparacion address==N_LEDS
-        # nunca se cumple (ver nota en ws2812_periph.v) y el
-        # refresco nunca termina una pasada.
+
         size = max(1, (n_leds - 1).bit_length())
 
-        # Los tiempos T0H/T1H/PER/RES del Verilog estan en CICLOS del
-        # reloj que recibe ws2812_periph (aca ClockSignal("sys")), no
-        # en microsegundos. Si se dejan los defaults del .v (pensados
-        # para 25MHz) mientras el SoC corre a otra frecuencia
-        # (sys_clk_freq), los pulsos quedan fuera de la tolerancia del
-        # datasheet WS2812 y no se reconoce ningun dato. Se calculan
-        # aca a partir del reloj real del sistema.
+       
         t0h = max(1, round(400e-9  * sys_clk_freq))  # bit "0": 400ns alto
         t1h = max(1, round(800e-9  * sys_clk_freq))  # bit "1": 800ns alto
         per = max(1, round(1240e-9 * sys_clk_freq))  # periodo total del bit
@@ -137,7 +111,7 @@ class WS2812(Module, AutoCSR):
             i_init_m    = self.init.storage,
             i_rst_cmd   = self.rst_cmd.storage,
 
-            # These three signals replace CSR w_data/w_address/we_a.
+  
             i_we_a      = self.loader.we,
             i_w_data    = self.loader.w_data,
             i_w_address = self.loader.w_address,
@@ -146,10 +120,7 @@ class WS2812(Module, AutoCSR):
             o_dout      = self.dout,
         )
 
-        # ws2812_led_array.v (version anterior/alterna del periferico,
-        # con memoria de un solo puerto y sin entrada DMA) se elimino
-        # de esta carpeta: no la instancia ni ws2812_periph.v ni ningun
-        # otro modulo, era codigo muerto vendorizado por error.
+      
         for src in ["ctrl_wsled.v", "ws2812.v", "comp_ws_arr.v", "count_wsled.v",
                     "ctrl_ws.v", "comp_ws.v", "count_ws.v", "lsr_wsled.v",
                     "ws2812_led.v", "ws2812_periph.v", "count_addr.v", "ctrl_ws_arr.v",

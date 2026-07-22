@@ -8,8 +8,7 @@ module ws2812_led (
     output       done
 );
 
-// Pasan tal cual hasta la instancia de ws2812.v (ver nota alli sobre
-// por que no se puede dejar el default asumiendo 25MHz).
+
 parameter T0H = 15'd10;
 parameter T1H = 15'd20;
 parameter PER = 15'd31;

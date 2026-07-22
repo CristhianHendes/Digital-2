@@ -20,12 +20,7 @@ module ctrl_ws_arr (
  parameter END_SEND   = 3'b110;
  parameter WAIT_REFRESH = 3'b111;
 
-// Ciclos @ 25MHz que se mantiene init_led=0 (dout en reposo) entre el
-// final de una pasada completa del arreglo y el inicio de la
-// siguiente. Sin este hueco, CHECK_END->START_SEND ocurre en 2-3
-// ciclos (~100ns) y los WS2812B/clones nunca relatchean datos nuevos:
-// solo se ve la primera imagen que alcanzo a latchear al arrancar,
-// sin importar cuantas veces el DMA reescriba el buffer despues.
+
 parameter REFRESH_GAP = 15'd12500; // 500us
 
 reg [2:0]  state;
