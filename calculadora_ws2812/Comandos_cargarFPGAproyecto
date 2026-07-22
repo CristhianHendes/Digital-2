@@ -1,0 +1,12 @@
+cd /home/cristhianhendes/digital_2/Digital-2/calculadora_ws2812
+source /home/cristhianhendes/litex/.venv/bin/activate
+
+# 1) Construir el SoC (gateware + BIOS)
+python3 colorlight_i9_calc_ws2812.py --board=i9 --revision=7.2 --build
+
+# 2) Cargar a la FPGA (SRAM, sin --write-flash)
+python3 colorlight_i9_calc_ws2812.py --board=i9 --revision=7.2 --load
+
+# 3) Compilar y subir el firmware
+make -C firmware/
+make -C firmware/ litex_term

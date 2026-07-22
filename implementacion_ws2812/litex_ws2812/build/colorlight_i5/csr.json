@@ -265,7 +265,7 @@
         "config_cpu_name": "vexriscv",
         "config_cpu_human_name": "VexRiscv",
         "config_cpu_nop": "nop",
-        "config_identifier": "LiteX SoC WS2812 on Colorlight I9 2026-07-21 13:26:15",
+        "config_identifier": "LiteX SoC WS2812 on Colorlight I9 2026-07-21 18:47:01",
         "spiflash_phy_frequency": 15000000,
         "spiflash_phy_min_divisor": 2,
         "spiflash_module_name": "w25q64",

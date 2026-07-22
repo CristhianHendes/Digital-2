@@ -1,0 +1,72 @@
+# LiteX build log
+# Started: 2026-07-22T13:21:55
+# Command: colorlight_i9_calc_ws2812.py --board=i9 --revision=7.2 --load
+# Working directory: /home/cristhianhendes/digital_2/Digital-2/calculadora_ws2812
+
+INFO:SoC:        __   _ __      _  __  
+INFO:SoC:       / /  (_) /____ | |/_/  
+INFO:SoC:      / /__/ / __/ -_)>  <    
+INFO:SoC:     /____/_/\__/\__/_/|_|  
+INFO:SoC:  Build your hardware, easily!
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Creating SoC... (2026-07-22 13:21:55)
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:FPGA device : LFE5U-45F-6BG381C.
+INFO:SoC:System clock: 60.000MHz.
+INFO:SoCBusHandler:Creating Bus Handler...
+INFO:SoCBusHandler:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoCBusHandler:Adding reserved Bus Regions...
+INFO:SoCBusHandler:Bus Handler created.
+INFO:SoCCSRHandler:Creating CSR Handler...
+INFO:SoCCSRHandler:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoCCSRHandler:Adding reserved CSRs...
+INFO:SoCCSRHandler:CSR Handler created.
+INFO:SoCIRQHandler:Creating IRQ Handler...
+INFO:SoCIRQHandler:IRQ Handler (up to 32 Locations).
+INFO:SoCIRQHandler:Adding reserved IRQs...
+INFO:SoCIRQHandler:IRQ Handler created.
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Initial SoC:
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:32-bit wishbone Bus, 4.0GiB Address Space.
+INFO:SoC:32-bit CSR Bus, 32-bit Aligned, 16.0KiB Address Space, 2048B Paging, big Ordering (Up to 32 Locations).
+INFO:SoC:IRQ Handler (up to 32 Locations).
+INFO:SoC:--------------------------------------------------------------------------------
+INFO:SoC:Controller ctrl added.
+INFO:SoC:CPU vexriscv added.
+INFO:SoC:CPU vexriscv adding IO Region 0 at 0x80000000 (Size: 0x80000000).
+INFO:SoCBusHandler:io0 Region added at Origin: 0x80000000, Size: 0x80000000, Mode:  RW, Cached: False, Linker: False.
+INFO:SoC:CPU vexriscv overriding sram mapping from 0x01000000 to 0x10000000.
+INFO:SoC:CPU vexriscv setting reset address to 0x00000000.
+INFO:SoC:CPU vexriscv adding Bus Master(s).
+INFO:SoCBusHandler:cpu_bus0 added as Bus Master.
+INFO:SoCBusHandler:cpu_bus1 added as Bus Master.
+INFO:SoC:CPU vexriscv adding Interrupt(s).
+INFO:SoC:CPU vexriscv adding SoC components.
+INFO:SoCBusHandler:rom Region added at Origin: 0x00000000, Size: 0x00020000, Mode:  RX, Cached:  True, Linker: False.
+INFO:SoCBusHandler:rom added as Bus Slave.
+INFO:SoC:RAM rom added Origin: 0x00000000, Size: 0x00020000, Mode:  RX, Cached:  True, Linker: False.
+INFO:SoCBusHandler:sram Region added at Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached:  True, Linker: False.
+INFO:SoCBusHandler:sram added as Bus Slave.
+INFO:SoC:RAM sram added Origin: 0x10000000, Size: 0x00002000, Mode: RWX, Cached:  True, Linker: False.
+INFO:SoCIRQHandler:uart IRQ allocated at Location 0.
+INFO:SoCIRQHandler:timer0 IRQ allocated at Location 1.
+INFO:SoCBusHandler:disp0_dma added as Bus Master.
+INFO:SoCBusHandler:Allocating Cached Region of size 0x00800000...
+INFO:SoCBusHandler:spiflash Region allocated at Origin: 0x00800000, Size: 0x00800000, Mode:  RX, Cached:  True, Linker: False.
+INFO:SoCBusHandler:spiflash Bus offset by 0x00800000.
+INFO:SoCBusHandler:spiflash added as Bus Slave.
+INFO:SoCBusHandler:main_ram Region added at Origin: 0x40000000, Size: 0x00800000, Mode: RWX, Cached:  True, Linker: False.
+openFPGALoader --board colorlight-i5 --bitstream /home/cristhianhendes/digital_2/Digital-2/calculadora_ws2812/build/colorlight_i5/gateware/colorlight_i5.bit
+INFO:SoCBusHandler:main_ram added as Bus Slave.
+empty
+Found 1 compatible device:
+	0x0d28 0x0204 0x3 DAPLink CMSIS-DAP
+Open file: DONE
+b3bdffff
+Parse file: DONE
+Enable configuration: DONE
+SRAM erase: DONE
+Loading: [==                                                ] 2.43%Loading: [===                                               ] 4.86%Loading: [====                                              ] 7.28%Loading: [=====                                             ] 9.71%Loading: [=======                                           ] 12.14%Loading: [========                                          ] 14.57%Loading: [=========                                         ] 16.99%Loading: [==========                                        ] 19.42%Loading: [===========                                       ] 21.85%Loading: [=============                                     ] 24.28%Loading: [==============                                    ] 26.70%Loading: [===============                                   ] 29.13%Loading: [================                                  ] 31.56%Loading: [=================                                 ] 33.99%Loading: [===================                               ] 36.41%Loading: [====================                              ] 38.84%Loading: [=====================                             ] 41.27%Loading: [======================                            ] 43.70%Loading: [========================                          ] 46.12%Loading: [=========================                         ] 48.55%Loading: [==========================                        ] 50.98%Loading: [===========================                       ] 53.41%Loading: [============================                      ] 55.83%Loading: [==============================                    ] 58.26%Loading: [===============================                   ] 60.69%Loading: [================================                  ] 63.12%Loading: [=================================                 ] 65.54%Loading: [==================================                ] 67.97%Loading: [====================================              ] 70.40%Loading: [=====================================             ] 72.83%Loading: [======================================            ] 75.25%Loading: [=======================================           ] 77.68%Loading: [=========================================         ] 80.11%Loading: [==========================================        ] 82.54%Loading: [===========================================       ] 84.96%Loading: [============================================      ] 87.39%Loading: [=============================================     ] 89.82%Loading: [===============================================   ] 92.25%Loading: [================================================  ] 94.67%Loading: [================================================= ] 97.10%Loading: [==================================================] 99.53%Loading: [==================================================] 100.00%
+Done
+Disable configuration: DONE
